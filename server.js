@@ -9,8 +9,13 @@ const port = process.env.PORT || 3001; // Ensure this port is different from you
 // Middleware
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(cors());
-
+app.use(
+  cors({
+    origin: "*", // Change to specific origin after testing
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    credentials: true,
+  }),
+);
 // Handle form submission
 app.post("/submit-form", (req, res) => {
   const { name, email, message, phone } = req.body;
