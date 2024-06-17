@@ -4,7 +4,7 @@ const nodemailer = require("nodemailer");
 const cors = require("cors");
 
 const app = express();
-const port = 3001; // Ensure this port is different from your React app's port
+const port = process.env.PORT || 3001; // Ensure this port is different from your React app's port
 
 // Middleware
 app.use(bodyParser.urlencoded({ extended: false }));
