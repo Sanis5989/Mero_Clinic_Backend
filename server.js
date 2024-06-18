@@ -2,16 +2,17 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const nodemailer = require("nodemailer");
 const cors = require("cors");
-
+const forceHttps = require("express-force-https");
 const app = express();
 const port = process.env.PORT || 3001; // Ensure this port is different from your React app's port
 
 // Middleware
+app.use(forceHttps);
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(
   cors({
-    origin: "*", // Change to specific origin after testing
+    origin: "*",
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     credentials: true,
   }),
